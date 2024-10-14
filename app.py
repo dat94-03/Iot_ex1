@@ -43,6 +43,9 @@ def get_data_by_device_id(device_id):
         return jsonify(matching_data)
     else:
         return 'No data found for the given deviceId', 404  # Return 404 if not found
+import os
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get('PORT', 5001))  # Render assigns the port
+    app.run(host='0.0.0.0', port=port, debug=True)
+
